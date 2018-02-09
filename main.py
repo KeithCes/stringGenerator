@@ -21,12 +21,44 @@ import random
 
 
 def main():
-    genHash = []
-    i = 0
-    while i < 16:
-        randLetter = random.choice(string.ascii_letters)
-        genHash.append(randLetter)
-        i += 1
-    print("".join(genHash))
+    print("Please input a number 0-32 for how long you want the hash: ")
+    length = int(input())
+    if length > 0 and length <= 32:
+        print("Please input whether you would like numbers, letters or both \
+(nums/lets/both)")
+        hashType = input()
+        if hashType == "nums":
+            genHash = []
+            i = 0
+            while i < length:
+                randNumber = random.randint(0, 9)
+                genHash.append(str(randNumber))
+                i += 1
+            print("".join(genHash))
+        elif hashType == "lets":
+            genHash = []
+            i = 0
+            while i < length:
+                randLetter = random.choice(string.ascii_letters)
+                genHash.append(randLetter)
+                i += 1
+            print("".join(genHash))
+        elif hashType == "both":
+            genHash = []
+            i = 0
+            while i < length:
+                numAlphaRoll = random.randint(1, 2)
+                if numAlphaRoll == 1:
+                    randLetter = random.choice(string.ascii_letters)
+                    genHash.append(randLetter)
+                elif numAlphaRoll == 2:
+                    randNumber = random.randint(0, 9)
+                    genHash.append(str(randNumber))
+                i += 1
+            print("".join(genHash))
+        else:
+            print("Input invalid")
+    else:
+            print("Input invalid")
 
 main()
